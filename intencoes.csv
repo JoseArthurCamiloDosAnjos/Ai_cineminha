@@ -1,0 +1,302 @@
+﻿
+intencao,pergunta
+saudacao,ola
+saudacao,oi
+saudacao,tudo bem
+saudacao,bom dia
+saudacao,boa tarde
+saudacao,boa noite
+saudacao,e ai
+saudacao,como vai
+saudacao,opa
+nome,qual e seu nome
+nome,como voce se chama
+nome,quem e voce
+nome,como posso te chamar
+despedida,tchau
+despedida,ate logo
+despedida,ate mais
+despedida,foi bom conversar com voce
+despedida,ate a proxima
+filme_comedia,me indique um filme de comedia
+filme_comedia,quero assistir uma comedia
+filme_comedia,me recomende um filme engracado
+filme_comedia,quais sao os melhores filmes de comedia
+filme_comedia,quero rir assistindo um filme
+filme_acao,me indique um filme de acao
+filme_acao,quero assistir um filme de luta
+filme_acao,quais sao os melhores filmes de acao
+filme_acao,me recomende um filme cheio de aventura
+filme_acao,quero um filme com muitas explosoes
+filme_terror,me indique um filme de terror
+filme_terror,quero assistir algo assustador
+filme_terror,qual o melhor filme de terror
+filme_terror,me recomende um filme de suspense e terror
+filme_terror,quero um filme que me de medo
+filme_romance,me indique um filme romantico
+filme_romance,quero assistir um filme de romance
+filme_romance,qual o melhor filme de amor
+filme_romance,me recomende um romance emocionante
+filme_romance,quero assistir uma historia de amor
+filme_ficcao_cientifica,me indique um filme de ficcao cientifica
+filme_ficcao_cientifica,quero assistir um filme sobre o espaco
+filme_ficcao_cientifica,me recomende um filme sobre o futuro
+filme_ficcao_cientifica,quais sao os melhores filmes de ficcao cientifica
+filme_ficcao_cientifica,quero um filme com robos e tecnologia
+filme_drama,me indique um filme de drama
+filme_drama,quero assistir um filme emocionante
+filme_drama,me recomende um filme triste
+filme_drama,quais sao os melhores filmes de drama
+filme_drama,quero assistir uma historia emocionante
+filme_animacao,me indique um filme de animacao
+filme_animacao,quero assistir um desenho animado
+filme_animacao,me recomende uma animacao
+filme_animacao,quais sao os melhores filmes de animacao
+filme_animacao,quero um filme para assistir com a familia
+filme_fantasia,me indique um filme de fantasia
+filme_fantasia,quero assistir um filme com magia
+filme_fantasia,me recomende um filme com dragões
+filme_fantasia,quais sao os melhores filmes de fantasia
+filme_fantasia,quero assistir algo com mundos fantasticos
+filme_aventura,me indique um filme de aventura
+filme_aventura,quero assistir um filme de exploracao
+filme_aventura,me recomende um filme com muita aventura
+filme_aventura,quais sao os melhores filmes de aventura
+filme_misterio,me indique um filme de misterio
+filme_misterio,quero assistir um filme de detetive
+filme_misterio,me recomende um filme cheio de enigmas
+filme_misterio,quero descobrir quem e o culpado
+filme_misterio,quais sao os melhores filmes de misterio
+filme_documentario,me indique um documentario
+filme_documentario,quero assistir um filme baseado em fatos reais
+filme_documentario,me recomende um documentario interessante
+filme_documentario,quais sao os melhores documentarios
+filme_nacional,me indique um filme brasileiro
+filme_nacional,quero assistir um filme nacional
+filme_nacional,quais sao os melhores filmes brasileiros
+filme_nacional,me recomende um filme produzido no Brasil
+filme_lancamento,quais sao os filmes mais novos
+filme_lancamento,quais filmes foram lancados recentemente
+filme_lancamento,me indique um lancamento de cinema
+filme_lancamento,quais sao os lancamentos de filmes
+filme_classico,me indique um filme classico
+filme_classico,quais sao os melhores filmes antigos
+filme_classico,quero assistir um filme antigo famoso
+filme_classico,me recomende um classico do cinema
+filme_melhor_avaliado,quais sao os filmes mais bem avaliados
+filme_melhor_avaliado,me indique um filme muito bem avaliado
+filme_melhor_avaliado,quais filmes tem as melhores notas
+filme_melhor_avaliado,quero assistir um filme premiado
+filme_duracao,me indique um filme curto
+filme_duracao,quero um filme com menos de duas horas
+filme_duracao,me indique um filme longo
+filme_duracao,quero saber quanto tempo dura um filme
+filme_recomendacao,me recomende um filme para assistir
+filme_recomendacao,nao sei qual filme assistir
+filme_recomendacao,escolha um filme para mim
+filme_recomendacao,estou procurando um bom filme
+filme_recomendacao,qual filme voce recomenda
+
+intencao,pergunta
+filme_suspense,me indique um filme de suspense
+filme_suspense,quero assistir algo cheio de suspense
+filme_suspense,me recomende um suspense psicologico
+filme_suspense,quero um filme que prenda minha atencao
+filme_suspense,qual o melhor filme de suspense
+filme_policial,me indique um filme policial
+filme_policial,quero assistir um filme sobre crimes
+filme_policial,me recomende um filme de investigacao criminal
+filme_policial,quero um filme sobre detetives
+filme_guerra,me indique um filme de guerra
+filme_guerra,quero assistir um filme sobre a segunda guerra mundial
+filme_guerra,me recomende um filme de batalha
+filme_guerra,quais sao os melhores filmes de guerra
+filme_musical,me indique um filme musical
+filme_musical,quero assistir um filme com musica e danca
+filme_musical,me recomende um musical
+filme_biografia,me indique um filme biografico
+filme_biografia,quero assistir um filme sobre uma pessoa famosa
+filme_biografia,me recomende um filme baseado na vida real
+filme_esporte,me indique um filme sobre futebol
+filme_esporte,quero assistir um filme sobre esportes
+filme_esporte,me recomende um filme sobre basquete
+filme_esporte,quero um filme sobre superacao no esporte
+filme_faroeste,me indique um filme de faroeste
+filme_faroeste,quero assistir um filme de velho oeste
+filme_faroeste,me recomende um filme de cowboy
+filme_apocalipse,me indique um filme sobre o fim do mundo
+filme_apocalipse,quero assistir um filme de apocalipse
+filme_apocalipse,me recomende um filme sobre zumbis
+filme_vampiro,me indique um filme de vampiros
+filme_vampiro,quero assistir um filme sobre vampiros
+filme_vampiro,me recomende um filme de criaturas sobrenaturais
+filme_dinossauro,me indique um filme com dinossauros
+filme_dinossauro,quero assistir um filme sobre dinossauros
+filme_dinossauro,qual o melhor filme de dinossauro
+filme_espacial,me indique um filme no espaco
+filme_espacial,quero assistir um filme sobre astronautas
+filme_espacial,me recomende um filme sobre viagens espaciais
+filme_espacial,quero um filme sobre planetas
+filme_ator,quais filmes tem o ator tom cruise
+filme_ator,me indique filmes com leonardo dicaprio
+filme_ator,quais filmes tem brad pitt
+filme_ator,quero assistir um filme com will smith
+filme_ator,me recomende filmes com morgan freeman
+filme_diretora_diretor,quais filmes foram dirigidos por christopher nolan
+filme_diretora_diretor,me indique um filme de steven spielberg
+filme_diretora_diretor,quais filmes foram feitos por james cameron
+filme_diretora_diretor,quero assistir um filme dirigido por tarantino
+filme_ano,me indique um filme de 2020
+filme_ano,quais filmes foram lancados em 2023
+filme_ano,quero assistir um filme dos anos 90
+filme_ano,me recomende um filme antigo dos anos 80
+filme_dublado,quero assistir um filme dublado
+filme_dublado,me indique um filme em portugues
+filme_dublado,tem esse filme dublado
+filme_legendado,quero assistir um filme legendado
+filme_legendado,me indique um filme legendado
+filme_legendado,quero assistir um filme no idioma original
+filme_netflix,me indique um filme da netflix
+filme_netflix,quais filmes tem na netflix
+filme_netflix,quero assistir um filme disponivel na netflix
+filme_netflix,me recomende algo para assistir na netflix
+filme_prime_video,me indique um filme do prime video
+filme_prime_video,quais filmes tem no amazon prime
+filme_prime_video,quero assistir algo no prime video
+filme_disney,me indique um filme da disney plus
+filme_disney,quais filmes tem no disney plus
+filme_disney,quero assistir um filme da disney
+filme_hbo,me indique um filme da max
+filme_hbo,quais filmes tem na max
+filme_hbo,quero assistir algo na max
+filme_familia,me indique um filme para assistir com minha familia
+filme_familia,quero um filme para assistir com meus pais
+filme_familia,me recomende um filme para toda familia
+filme_crianca,me indique um filme infantil
+filme_crianca,quero um filme para criancas
+filme_crianca,qual filme posso assistir com meu filho
+filme_adolescente,me indique um filme adolescente
+filme_adolescente,quero assistir um filme para jovens
+filme_adolescente,me recomende um filme escolar
+filme_curta,me indique um curta metragem
+filme_curta,quero assistir um filme de poucos minutos
+filme_curta,me recomende um curta interessante
+filme_trilogia,me indique uma trilogia de filmes
+filme_trilogia,quais sao as melhores trilogias
+filme_trilogia,quero assistir uma saga de filmes
+filme_sequencia,qual e a continuacao desse filme
+filme_sequencia,esse filme tem parte dois
+filme_sequencia,qual filme vem depois desse
+filme_sequencia,quero saber se existe uma sequencia
+filme_remake,me indique um remake de filme
+filme_remake,quais filmes ganharam novas versoes
+filme_remake,quero assistir uma nova versao de um filme antigo
+filme_final,me explique o final desse filme
+filme_final,nao entendi o final do filme
+filme_final,qual o significado do final desse filme
+filme_historia,me conte a historia desse filme
+filme_historia,sobre o que e esse filme
+filme_historia,qual e a sinopse desse filme
+filme_elenco,quem sao os atores desse filme
+filme_elenco,qual e o elenco desse filme
+filme_elenco,quem participa desse filme
+filme_duracao,quantas horas dura esse filme
+filme_duracao,qual e o tempo de duracao do filme
+filme_classificacao,qual a classificacao indicativa desse filme
+filme_classificacao,esse filme e indicado para criancas
+filme_classificacao,qual a idade minima para assistir
+filme_premio,quais filmes ganharam o oscar
+filme_premio,me indique filmes premiados
+filme_premio,quais filmes ganharam premios importantes
+filme_premio,quero assistir um filme vencedor do oscar
+filme_triste,me indique um filme muito triste
+filme_triste,quero assistir um filme emocionante
+filme_triste,me recomende um filme para chorar
+filme_positivo,me indique um filme inspirador
+filme_positivo,quero assistir um filme motivacional
+filme_positivo,me recomende um filme com final feliz
+filme_inesperado,me indique um filme com final surpreendente
+filme_inesperado,quero um filme cheio de reviravoltas
+filme_inesperado,me recomende um filme imprevisivel
+filme_pouco_conhecido,me indique um filme pouco conhecido
+filme_pouco_conhecido,quero assistir um filme escondido
+filme_pouco_conhecido,me recomende um filme subestimado
+filme_estreia,quando esse filme estreia
+filme_estreia,qual a data de lancamento desse filme
+filme_estreia,quando vai sair esse filme
+filme_disponibilidade,onde posso assistir esse filme
+filme_disponibilidade,em qual plataforma esse filme esta disponivel
+filme_disponibilidade,onde encontro esse filme para assistir
+filme_comparacao,qual e melhor esse filme ou aquele
+filme_comparacao,compare dois filmes para mim
+filme_comparacao,qual filme vale mais a pena assistir
+filme_genero,quais sao os generos desse filme
+filme_genero,esse filme e de qual genero
+filme_genero,quero saber a categoria desse filme
+filme_lista,me indique cinco filmes de terror
+filme_lista,quero uma lista de filmes de comedia
+filme_lista,me mostre dez filmes de acao
+filme_lista,quais filmes voce recomenda
+video,quero assistir um trailer de filme
+video,me mostre o trailer de um filme
+video,quero ver o trailer desse filme
+video,onde posso assistir o trailer
+video,procure o trailer desse filme
+video,tem trailer desse filme
+video,quero assistir ao trailer oficial
+video,me mostre o trailer oficial do filme
+video,quero ver um trailer dublado
+video,quero ver um trailer legendado
+video,me mostre um trailer em portugues
+video,quero assistir um trailer de acao
+video,quero ver um trailer de comedia
+video,quero assistir um trailer de romance
+video,quero ver um trailer de terror
+video,me mostre trailers de suspense
+video,quero ver um trailer de ficcao cientifica
+video,procure trailers de aventura
+video,quais sao os trailers mais recentes
+video,me mostre os lancamentos de trailers
+video,quero ver trailers de filmes novos
+video,quais filmes tem trailer novo
+video,me mostre trailers que estao em alta
+video,quero assistir um teaser de filme
+video,me mostre o teaser oficial
+video,qual e o teaser desse filme
+video,quero ver um video promocional do filme
+video,me mostre cenas do filme
+video,quero assistir uma previa do filme
+video,quero ver uma previa sem spoilers
+video,me mostre o primeiro trailer do filme
+video,quero ver o segundo trailer desse filme
+video,existe trailer desse filme
+video,esse filme ja tem trailer
+video,quando sai o trailer desse filme
+video,qual a data de lancamento do trailer
+video,me mostre o trailer legendado em portugues
+video,quero ver o trailer dublado em portugues
+video,procure o trailer no youtube
+video,quero assistir ao trailer pelo youtube
+video,me mostre o video oficial do filme
+video,quero ver o trailer completo
+video,quero assistir trailers de filmes brasileiros
+video,me indique trailers de filmes de terror
+video,quero uma lista de trailers de acao
+video,me mostre varios trailers de comedia
+video,quero comparar os trailers de dois filmes
+video,qual trailer vale a pena assistir
+video,me mostre o trailer de um filme premiado
+video,quero ver o trailer de um filme antigo
+video,me mostre trailers de filmes classicos
+video,quero assistir trailers de filmes infantis
+video,me mostre trailers para assistir com a familia
+video,quero ver trailer de desenho animado
+video,me mostre trailer de anime
+video,quero assistir um making of de filme
+video,me mostre os bastidores desse filme
+video,quero ver entrevistas com os atores
+video,me mostre videos sobre esse filme
+video,quero ver uma analise do trailer
+video,me mostre uma critica em video desse filme
+video,quero assistir uma explicacao sobre o filme
+video,me mostre um resumo em video do filme

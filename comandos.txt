@@ -1,0 +1,13 @@
+
+python -m pip install virtualenv
+
+python -m virtualenv venv       
+
+.\venv\Scripts\activate
+
+python -m pip install rasa
+
+// Depedencia 
+python -m pip install chatterbot
+
+python -m pip install requests
