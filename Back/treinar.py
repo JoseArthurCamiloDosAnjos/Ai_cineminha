@@ -1,8 +1,8 @@
 import csv
-from chatterbot import ChatBot
+from chatterbot import ChatBot, languages
 from chatterbot.trainers import ListTrainer
 
-bot = ChatBot("Assistente", database_uri="sqlite:///assistente.sqlite3")
+bot = ChatBot("Cineminha", database_uri="sqlite:///assistente.sqlite3", language=languages.POR)
 
 treinador = ListTrainer(bot)
 

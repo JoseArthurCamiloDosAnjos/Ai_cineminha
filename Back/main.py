@@ -1,8 +1,8 @@
 import threading
 
-from fastapi import FatAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import PlainTextReponse
+from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
 
 import assistente 
@@ -11,9 +11,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost5173"],
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
+    allow_private_network=True,
 )
 
 lock = threading.Lock()
@@ -28,7 +29,7 @@ class ChatRequest(BaseModel):
 @app.post("/chat")
 def chat(req: ChatRequest):
     if not req.messages:
-        return PlainTextReponse("Envie uma mensagem.")
+        return PlainTextResponse("Envie uma mensagem.")
     
     pergunta = req.messages[-1].content
     
@@ -39,4 +40,4 @@ def chat(req: ChatRequest):
         print("Erro no assistente:", e)
         resposta = "Ocorreu um erro ao passar sua mensagem."
         
-    return PlainTextReponse(resposta)
+    return PlainTextResponse(resposta)

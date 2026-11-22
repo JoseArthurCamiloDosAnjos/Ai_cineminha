@@ -1,6 +1,68 @@
-intencao,resposta
-saudacao,Olá! Como posso ajudar?
-saudacao,Oi! De que forma posso ajudar?
-nome,Meu nome é Assistente Virtual.
-despedida,Até mais!
-video,Abrindo o Youtube
+﻿intencao,resposta
+saudacao,Olá! Bem-vindo ao Cineminha! O que você gostaria de assistir hoje?
+nome,Meu nome é Cineminha! Sou seu assistente virtual para descobrir filmes e trailers.
+despedida,Até mais! Espero que encontre um ótimo filme. Volte sempre!
+agradecimento,Por nada! Fico feliz em ajudar. Conte comigo para encontrar seu próximo filme!
+ajuda,"Claro! Posso recomendar filmes, procurar trailers, apresentar sinopses e ajudar com informações sobre o cinema. O que você procura?"
+humor,Vamos dar boas risadas? Posso recomendar uma comédia para animar seu dia!
+tempo,"No momento, não consigo consultar a previsão do tempo. Mas posso ajudar você a escolher um filme para hoje!"
+desconhecido,"Desculpe, não entendi. Você pode reformular? Posso ajudar com filmes, gêneros, trailers e plataformas."
+filme_comedia,Que tal dar boas risadas? Vou procurar uma comédia para você!
+filme_acao,Preparado para muita adrenalina? Vou procurar um filme de ação!
+filme_terror,Gosta de sentir medo? Vou procurar um terror para arrepiar!
+filme_romance,Uma boa história de amor sempre combina com uma sessão de cinema. Vou procurar um romance!
+filme_ficcao_cientifica,"Vamos explorar o futuro, a tecnologia e outros mundos! Vou procurar uma ficção científica."
+filme_drama,Vou procurar um drama com uma história marcante e emocionante.
+filme_animacao,Que tal uma animação? Vou procurar uma opção divertida para sua sessão!
+filme_fantasia,Prepare-se para mundos mágicos e criaturas extraordinárias! Vou procurar uma fantasia.
+filme_aventura,Uma grande jornada está começando! Vou procurar um filme de aventura.
+filme_misterio,Vamos desvendar esse mistério! Vou procurar um filme cheio de enigmas e reviravoltas.
+filme_documentario,Vou procurar um documentário interessante para você conhecer mais sobre o mundo.
+filme_nacional,Vamos valorizar o cinema brasileiro! Vou procurar um filme nacional.
+filme_lancamento,Vou verificar os lançamentos mais recentes para você.
+filme_classico,Que tal revisitar uma obra marcante do cinema? Vou procurar um clássico.
+filme_melhor_avaliado,Vou procurar filmes muito bem avaliados para ajudar na sua escolha.
+filme_duracao,Vamos encontrar um filme com a duração que você procura.
+filme_recomendacao,Deixe comigo! Vou escolher uma recomendação de filme para você.
+filme_suspense,Prepare-se para ficar na expectativa! Vou procurar um suspense que prenda sua atenção.
+filme_policial,"Vou procurar uma história policial com crimes, investigações e mistérios."
+filme_guerra,Vou procurar um filme de guerra com histórias e acontecimentos marcantes.
+filme_musical,"Que tal uma sessão com música, dança e grandes apresentações? Vou procurar um musical."
+filme_biografia,Vou procurar um filme biográfico para apresentar a história de uma pessoa real.
+filme_esporte,"Vou procurar um filme sobre esporte, desafios e superação."
+filme_faroeste,Prepare-se para o Velho Oeste! Vou procurar um bom faroeste.
+filme_apocalipse,"Vou procurar um filme sobre o fim do mundo, sobrevivência ou apocalipse."
+filme_vampiro,Vou procurar um filme com vampiros e criaturas sobrenaturais.
+filme_dinossauro,Vamos voltar à era dos gigantes! Vou procurar um filme com dinossauros.
+filme_espacial,Prepare-se para uma viagem pelo espaço! Vou procurar um filme sobre astronautas e exploração espacial.
+filme_ator,Vou procurar filmes com {ator}.
+filme_diretora_diretor,Vou procurar filmes dirigidos por {diretor}.
+filme_ano,Vou procurar filmes lançados em {ano}.
+filme_dublado,Vou procurar opções disponíveis com dublagem em português.
+filme_legendado,Vou procurar opções disponíveis com áudio original e legendas.
+filme_netflix,Vou procurar filmes disponíveis na Netflix.
+filme_prime_video,Vou procurar filmes disponíveis no Prime Video.
+filme_disney,Vou procurar filmes disponíveis no Disney+.
+filme_hbo,Vou procurar filmes disponíveis na Max.
+filme_familia,Vou procurar um filme adequado para uma sessão em família.
+filme_crianca,Vou procurar um filme infantil para você.
+filme_adolescente,Vou procurar um filme que combine com o público adolescente.
+filme_curta,Vou procurar um curta-metragem para uma sessão rápida.
+filme_trilogia,Vou procurar trilogias interessantes para você assistir.
+filme_sequencia,Vou verificar se esse filme tem continuação e qual é o próximo da sequência.
+filme_remake,Vou procurar remakes: novas versões de filmes que já foram lançados.
+filme_final,Posso explicar o final de {titulo}. Você prefere uma explicação com spoilers?
+filme_historia,Vou apresentar a sinopse e os principais detalhes da história de {titulo}.
+filme_elenco,Vou consultar o elenco de {titulo}.
+filme_classificacao,Vou verificar a classificação indicativa de {titulo}.
+filme_premio,"Vou procurar filmes vencedores de prêmios importantes, como o Oscar."
+filme_triste,"Vou procurar um filme emocionante, daqueles que podem arrancar lágrimas."
+filme_positivo,"Vou procurar um filme inspirador, com uma mensagem positiva ou um final feliz."
+filme_inesperado,Vou procurar um filme com reviravoltas e um final surpreendente.
+filme_pouco_conhecido,Vou procurar um filme menos conhecido que merece sua atenção.
+filme_estreia,Vou verificar a data de estreia de {titulo}.
+filme_disponibilidade,Vou verificar em quais plataformas {titulo} está disponível para assistir.
+filme_comparacao,Vamos comparar os filmes {filme1} e {filme2} para descobrir qual combina mais com você.
+filme_genero,Vou verificar quais são os gêneros do filme {titulo}.
+filme_lista,Claro! Vou preparar uma lista de filmes de acordo com o gênero ou tema que você pediu.
+video,Vou procurar o trailer ou vídeo relacionado ao filme que você pediu.

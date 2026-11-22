@@ -70,7 +70,7 @@ export default function App() {
 
   return (
     <div className="chat">
-      <header className="chat-header">Meu Chatbot</header>
+      <header className="chat-header">Bora um cineminha?</header>
 
       <main className="chat-messages">
         {messages.length === 0 && (

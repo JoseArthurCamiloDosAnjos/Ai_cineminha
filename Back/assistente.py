@@ -2,9 +2,9 @@ import csv
 import requests
 import unicodedata
 import acoes
-from chatterbot import ChatBot
+from chatterbot import ChatBot, languages
 
-bot = ChatBot("Assistente", database_uri="sqlite:///assistente.sqlite3")
+bot = ChatBot("Assistente", database_uri="sqlite:///assistente.sqlite3", language=languages.POR)
 
 LIMITE = 0.40
 
