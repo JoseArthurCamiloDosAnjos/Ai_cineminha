@@ -19,7 +19,6 @@ def _carregar_env():
 _ENV = _carregar_env()
 API_KEY = _ENV.get("TMDB_API_KEY") or os.getenv("TMDB_API_KEY")
 BASE_URL = _ENV.get("TMDB_BASE_URL") or os.getenv("TMDB_BASE_URL", "https://api.themoviedb.org/3")
-IMAGE_BASE = _ENV.get("TMDB_IMAGE_BASE") or os.getenv("TMDB_IMAGE_BASE", "https://image.tmdb.org/t/p/w500")
 LANGUAGE = _ENV.get("TMDB_LANGUAGE") or os.getenv("TMDB_LANGUAGE", "pt-BR")
 
 TIMEOUT = 10
@@ -153,7 +152,6 @@ def formatar_filme(f):
         "ano": (f.get("release_date") or "")[:4] or "Desconhecido",
         "nota": f.get("vote_average", 0),
         "sinopse": f.get("overview") or "Sem sinopse disponível.",
-        "poster": f"{IMAGE_BASE}{f['poster_path']}" if f.get("poster_path") else None,
         "generos": [g["name"] for g in f.get("genres", [])],
     }
 
@@ -175,7 +173,6 @@ def formatar_filme_detalhado(dados):
         "ano": (dados.get("release_date") or "")[:4] or "Desconhecido",
         "nota": dados.get("vote_average", 0),
         "sinopse": dados.get("overview") or "Sem sinopse disponível.",
-        "poster": f"{IMAGE_BASE}{dados['poster_path']}" if dados.get("poster_path") else None,
         "generos": generos,
         "diretor": diretor or "Não informado",
         "atores": atores,

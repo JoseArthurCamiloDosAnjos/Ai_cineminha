@@ -7,7 +7,19 @@ import catalogo
 import api_filmes
 from chatterbot import ChatBot, languages
 
-bot = ChatBot("Assistente", database_uri="sqlite:///assistente.sqlite3", language=languages.POR)
+bot = ChatBot(
+    "Assistente",
+    database_uri="sqlite:///assistente.sqlite3",
+    language=languages.POR,
+    # read_only evita que cada pergunta seja gravada no banco, o que
+    # poluía o modelo e gerava respostas aleatórias/inconsistentes.
+    read_only=True,
+    # O BestMatch interrompe a busca no primeiro resultado >= threshold.
+    # Com o padrão (0.7) ele pegava um parecido ("quero assistir uma
+    # comedia") e ignorava o match exato da intenção. Com 1.0 ele só
+    # para em igualdade perfeita e, caso contrário, usa o mais próximo.
+    maximum_similarity_threshold=1.0,
+)
 
 LIMITE = 0.30
 
@@ -36,6 +48,17 @@ with open("respostas.csv", encoding="utf-8-sig") as arquivo:
     for linha in leitor:
         RESPOSTA_PARA_INTENCAO[linha["resposta"]] = linha["intencao"]
 
+
+def intencao_da_resposta(resposta_template):
+    intencao = RESPOSTA_PARA_INTENCAO.get(resposta_template)
+    if intencao is not None:
+        return intencao
+    alvo = preparar_texto(resposta_template)
+    for texto, intencao in RESPOSTA_PARA_INTENCAO.items():
+        if preparar_texto(texto) == alvo:
+            return intencao
+    return None
+
 CAMPOS_FILME = {
     "classificacao": "filme_classificacao",
     "elenco": "filme_elenco",
@@ -60,26 +83,44 @@ def preparar_texto(texto):
     return texto
 
 
+STOPWORDS_TITULO = {
+    "qual", "quais", "onde", "como", "quando", "para", "por", "que", "este",
+    "esta", "esse", "essa", "isso", "desse", "dessa", "deste", "desta",
+    "filme", "filmes", "trailer", "video", "indicativa", "posso", "assistir",
+    "historia", "sinopse", "elenco", "classificacao", "estreia",
+    "disponibilidade", "disponivel", "genero", "final", "sobre", "tempo",
+    "duracao", "horas", "hora", "idade", "minima", "significado",
+    "plataforma", "plataformas", "e", "do", "da", "de", "em", "o", "a",
+    "os", "as", "um", "uma", "meu", "minha", "esse", "essa",
+}
+
+
 def extrair_entidades(pergunta):
     texto = pergunta.lower()
     entidades = {"ator": None, "diretor": None, "titulo": None, "ano": None, "genero": None, "plataforma": None}
 
-    padrao_ator = re.search(r"(?:com|ator|atriz|elenco|tem|quer assistir com)\s+(?:o\s+|a\s+|os\s+|as\s+)?([a-záãâêôõç\s]+?)(?:\s+(?:de|dirigido|lançado|ano|em|\?|$)|$)", texto)
+    padrao_ator = re.search(r"\b(?:com|ator|atriz|elenco|tem|quer\s+assistir\s+com)\s+(?:o\s+|a\s+|os\s+|as\s+)?([a-záãâêôõç\s]+?)(?:\s+(?:de|dirigido|lancado|ano|em|\?|$)|$)", texto)
     if padrao_ator:
         entidades["ator"] = padrao_ator.group(1).strip()
 
-    padrao_diretor = re.search(r"(?:dirigido por|diretor|diretora|feita por)\s+(?:o\s+|a\s+)?([a-záãâêôõç\s]+?)(?:\?|$)", texto)
+    padrao_diretor = re.search(r"\b(?:dirigid(?:o|a|os|as)\s+por|diretor|diretora|feita\s+por)\s+(?:o\s+|a\s+)?([a-záãâêôõç\s]+?)(?:\?|$)", texto)
     if padrao_diretor:
         entidades["diretor"] = padrao_diretor.group(1).strip()
 
-    padrao_ano = re.search(r"(?:de|em|dos|dos anos|ano)\s+(\d{4})", texto)
+    padrao_ano = re.search(r"\b(?:de|em|dos|ano)\s+(\d{4})", texto)
     if padrao_ano:
         entidades["ano"] = padrao_ano.group(1)
 
-    padrao_titulo = re.search(r"(?:de|do|da|sobre|sinopse|elenco|classificacao|estreia|disponibilidade|genero|final|historia|qual e|qual e|e o|e a)\s+(?:o\s+|a\s+|os\s+|as\s+|do\s+|da\s+)?([a-záãâêôõç0-9\s:]+?)(?:\?|$)", texto)
+    padrao_titulo = re.search(r"\b(?:de|do|da|sobre|sinopse|elenco|classificacao|estreia|disponibilidade|genero|final|historia|qual\s+e|e\s+o|e\s+a)\s+(?:o\s+|a\s+|os\s+|as\s+|do\s+|da\s+)?([a-záãâêôõç0-9\s:]+?)(?:\?|$)", texto)
     if padrao_titulo:
         titulo = padrao_titulo.group(1).strip()
-        prefixos = ("o ", "a ", "os ", "as ", "do ", "da ", "de ", "historia ", "sinopse ", "elenco ", "classificacao ", "estreia ", "disponibilidade ", "genero ", "final ", "sobre ")
+        prefixos = (
+            "o ", "a ", "os ", "as ", "do ", "da ", "de ", "historia ", "sinopse ",
+            "elenco ", "classificacao ", "estreia ", "disponibilidade ", "genero ",
+            "final ", "sobre ", "esse ", "essa ", "este ", "esta ", "desse ", "dessa ",
+            "deste ", "desta ", "isso ",
+        )
+        sufixos = (" filme", " desse", " dessa", " desse filme", " dessa filme", " dele", " dela")
         mudou = True
         while mudou:
             mudou = False
@@ -87,7 +128,18 @@ def extrair_entidades(pergunta):
                 if titulo.startswith(pref):
                     titulo = titulo[len(pref):]
                     mudou = True
-        entidades["titulo"] = titulo
+            for suf in sufixos:
+                if titulo.endswith(suf):
+                    titulo = titulo[: -len(suf)]
+                    mudou = True
+        titulo = titulo.strip()
+        palavras_titulo = titulo.split()
+        eh_ano = bool(re.fullmatch(r"\d{4}", titulo))
+        so_stopwords = bool(palavras_titulo) and all(
+            p in STOPWORDS_TITULO for p in palavras_titulo
+        )
+        if titulo and not eh_ano and not so_stopwords:
+            entidades["titulo"] = titulo
 
     for genero in catalogo.GENEROS_MAP:
         if genero in texto:
@@ -115,6 +167,26 @@ def substituir_placeholders(resposta, entidades):
         resposta = resposta.replace("{titulo}", entidades["titulo"].title())
     if "{filme1}" in resposta and entidades.get("titulo"):
         resposta = resposta.replace("{filme1}", entidades["titulo"].title())
+    return resposta
+
+
+PERGUNTAS_PLACEHOLDER = (
+    ("{filme2}", "E qual é o outro filme que você quer comparar? Ex.: \"comparar Matrix e Interestelar\""),
+    ("{filme1}", "Qual filme você quer usar? Ex.: \"sinopse de Interestelar\""),
+    ("{titulo}", "Qual é o título do filme?"),
+    ("{ator}", "Qual ator ou atriz você quer dizer?"),
+    ("{diretor}", "Qual diretor ou diretora você quer dizer?"),
+    ("{ano}", "Qual ano você quer pesquisar?"),
+    ("{genero}", "Qual gênero você quer dizer?"),
+)
+
+
+def resolver_placeholders(resposta):
+    """Se algum placeholder sobrou sem valor, pergunta o dado que falta
+    em vez de devolver texto com '{...}' para o usuário."""
+    for placeholder, pergunta in PERGUNTAS_PLACEHOLDER:
+        if placeholder in resposta:
+            return pergunta
     return resposta
 
 
@@ -316,19 +388,34 @@ def resposta_recomendacao(intencao, entidades):
 
 
 def pesquisar(pergunta, confianca):
-    resposta = requests.get(
-        "https://api.duckduckgo.com/",
-        params={
-            "q": pergunta,
-            "format": "json",
-            "no_html": 1,
-            "kl": "br-pt",
-            "kad": "pt_BR",
-        },
-        timeout=10,
+    try:
+        resposta = requests.get(
+            "https://api.duckduckgo.com/",
+            params={
+                "q": pergunta,
+                "format": "json",
+                "no_html": 1,
+                "kl": "br-pt",
+                "kad": "pt_BR",
+            },
+            timeout=10,
+        )
+        dados = resposta.json()
+        texto = dados.get("AbstractText") or dados.get("Answer") or ""
+        if not texto:
+            for topico in dados.get("RelatedTopics", []):
+                if isinstance(topico, dict) and topico.get("Text"):
+                    texto = topico["Text"]
+                    break
+        if texto:
+            return texto
+    except Exception:
+        pass
+    return (
+        "Não tenho certeza sobre isso. Posso recomendar filmes, procurar "
+        "trailers e dar informações de cinema. Tente algo como "
+        "\"me indique um filme de comedia\" ou \"quero ver o trailer de Duna\"."
     )
-    dados = resposta.json()
-    return dados.get("AbstractText") or f"Não encontrei uma resposta. {confianca}"
 
 
 def registrar(pergunta, confianca, resposta):
@@ -351,8 +438,20 @@ def resposta_genero_solto(pergunta):
     return None
 
 
+def resposta_acao_video(pergunta_limpa):
+    """Detecta pedidos explícitos de vídeo/trailer (ex.: 'quero ver o
+    trailer de Duna', 'video de terror') e dispara a ação correspondente."""
+    if acoes.detectar_acao_video(pergunta_limpa):
+        return acoes.abrir_video(pergunta_limpa)
+    return None
+
+
 def pipeline(pergunta):
     pergunta_limpa = preparar_texto(pergunta)
+
+    acao_video = resposta_acao_video(pergunta_limpa)
+    if acao_video:
+        return acao_video
 
     campo = resposta_campo_filme(pergunta_limpa)
     if campo:
@@ -366,15 +465,16 @@ def pipeline(pergunta):
 
     if resultado.confidence >= LIMITE:
         resposta_template = resultado.text
-        intencao = RESPOSTA_PARA_INTENCAO.get(resposta_template)
+        intencao = intencao_da_resposta(resposta_template)
 
         if intencao is None:
             resposta = pesquisar(pergunta_limpa, resultado.confidence)
             registrar(pergunta_limpa, resultado.confidence, resposta)
             return resposta
 
-        if intencao == acoes.RESPOSTA_VIDEO:
-            return acoes.abrir_video(pergunta_limpa)
+        acao = acoes.ACOES.get(intencao)
+        if acao:
+            return acao(pergunta)
 
         entidades = extrair_entidades(pergunta_limpa)
 
@@ -383,7 +483,7 @@ def pipeline(pergunta):
             return recomendacao
 
         resposta_final = substituir_placeholders(resposta_template, entidades)
-        return resposta_final
+        return resolver_placeholders(resposta_final)
 
     resposta = pesquisar(pergunta_limpa, resultado.confidence)
     registrar(pergunta_limpa, resultado.confidence, resposta)
